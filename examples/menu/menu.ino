@@ -38,8 +38,11 @@ char ds18b20_fname[20] = "?";
 
 result onDS18B20Family()
 {
-  strncpy(ds18b20_fname, CheckDS18B20::ds18b20_name(&onewire, 0), sizeof(ds18b20_fname)-1);
-  ds18b20_fname[sizeof(ds18b20_fname) - 1] = '\0';
+  #ifdef __AVR__
+  strlcpy_P(ds18b20_fname, (const char *)CheckDS18B20::ds18b20_name(&onewire, 0), sizeof(ds18b20_fname));
+  #else
+  strlcpy(ds18b20_fname, CheckDS18B20::ds18b20_name(&onewire, 0), sizeof(ds18b20_fname));
+  #endif
   return (proceed);
 }
 

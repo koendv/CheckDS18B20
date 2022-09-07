@@ -8,6 +8,10 @@ namespace CheckDS18B20 {
 
   /* the first sensor has sensor_number 0 */
   DS18B20_family_enum ds18b20_family(OneWire* _OneWire, int sensor_number);
+#ifdef __AVR__
+  const __FlashStringHelper* ds18b20_name(OneWire* _OneWire, int sensor_number);
+#else
   const char* ds18b20_name(OneWire* _OneWire, int sensor_number);
+#endif
 };
 #endif

@@ -453,20 +453,17 @@ err_C:
 
 
 #ifdef __AVR__
-static char buf[20];
-#endif
-
+const __FlashStringHelper * ds18b20_name(OneWire* _OneWire, int sensor_number)
+{
+  DS18B20_family_enum i = ds18b20_family(_OneWire, sensor_number);
+  return (const __FlashStringHelper *)pgm_read_word(&(sensor_descr[i]));
+}
+#else
 const char * ds18b20_name(OneWire* _OneWire, int sensor_number)
 {
   DS18B20_family_enum i = ds18b20_family(_OneWire, sensor_number);
-#ifdef __AVR__
-  // on avr copy from progmem to ram first
-  strlcpy_P(buf, (char *)pgm_read_word(&(sensor_descr[i])), sizeof(buf));
-  return buf;
-#else
-  // just return a pointer to flash
   return (sensor_descr[i]);
-#endif
 }
+#endif
 
 }
