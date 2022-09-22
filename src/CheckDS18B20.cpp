@@ -85,7 +85,7 @@ namespace CheckDS18B20 {
 static const char descr_a1[] PROGMEM              = "A1 Maxim DS18B20";
 static const char descr_a2[] PROGMEM              = "A2";
 static const char descr_a_unknown[] PROGMEM       = "A";
-static const char descr_b1[] PROGMEM              = "B1 GXCAS 18B20";
+static const char descr_b1[] PROGMEM              = "B1 GXCAS GX18B20";
 static const char descr_b2[] PROGMEM              = "B2 7Q-Tek QT18B20";
 static const char descr_b_unknown[] PROGMEM       = "B";
 static const char descr_c[] PROGMEM               = "C SENSYLINK CT1820B";
